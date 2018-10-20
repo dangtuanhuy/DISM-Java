@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="CardID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT a.*, b.* FrOM ATMCard a JOIN KhachHang b ON a.KHID = b.ID Where a.atmcardid = $P{CardID}]]>
+	</queryString>
+	<field name="ID" class="java.lang.Integer"/>
+	<field name="ATMCardID" class="java.lang.Integer"/>
+	<field name="PIN" class="java.lang.Integer"/>
+	<field name="KHID" class="java.lang.Integer"/>
+	<field name="ThoiGian" class="java.sql.Timestamp"/>
+	<field name="ThoiHan" class="java.sql.Timestamp"/>
+	<field name="TrangThai" class="java.lang.Boolean"/>
+	<field name="STK" class="java.lang.String"/>
+	<field name="HoTen" class="java.lang.String"/>
+	<field name="DiaChi" class="java.lang.String"/>
+	<field name="Email" class="java.lang.String"/>
+	<field name="SoDienThoai" class="java.lang.String"/>
+	<field name="GioiTinh" class="java.lang.Boolean"/>
+	<field name="SoDu" class="java.lang.Long"/>
+	<field name="NgaySinh" class="java.sql.Timestamp"/>
+	<field name="SoCMND" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="84">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="71" width="555" height="1" forecolor="#009999"/>
+			</line>
+			<staticText>
+				<reportElement x="65" y="30" width="424" height="38" forecolor="#FF3333"/>
+				<textElement textAlignment="Center">
+					<font fontName="Castellar" size="30" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CARD INFO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="0" width="378" height="20" forecolor="#3333FF"/>
+				<textElement>
+					<font fontName="Brush Script MT" size="15" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ATM - ATM SYSTEM MANAGER]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band height="17"/>
+	</columnHeader>
+	<detail>
+		<band height="287">
+			<staticText>
+				<reportElement x="24" y="0" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Account Number : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="143" y="0" width="141" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{STK}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="24" y="38" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Full Name : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="24" y="115" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Address : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="143" y="115" width="388" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{DiaChi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="143" y="38" width="388" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{HoTen}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="24" y="75" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Email : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="143" y="75" width="173" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Email}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="24" y="152" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Identity Number : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="342" y="75" width="69" height="20"/>
+				<textElement/>
+				<text><![CDATA[Mobile Phone : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="431" y="75" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{SoDienThoai}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="143" y="152" width="141" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{SoCMND}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="342" y="152" width="69" height="20"/>
+				<textElement/>
+				<text><![CDATA[Gender : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="431" y="150" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Boolean"><![CDATA[$F{GioiTinh}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="342" y="0" width="69" height="20"/>
+				<textElement/>
+				<text><![CDATA[Card Number : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="431" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{ATMCardID}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="24" y="189" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[PIN : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="143" y="189" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{PIN}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="342" y="194" width="69" height="20"/>
+				<textElement/>
+				<text><![CDATA[DOB : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="431" y="194" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{NgaySinh}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="24" y="227" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Date : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="143" y="226" width="141" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.sql.Timestamp"><![CDATA[$F{ThoiGian}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="342" y="227" width="69" height="20"/>
+				<textElement/>
+				<text><![CDATA[Expiry Date : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="431" y="227" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.sql.Timestamp"><![CDATA[$F{ThoiHan}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="184" y="254" width="59" height="20"/>
+				<textElement/>
+				<text><![CDATA[Balance : ]]></text>
+			</staticText>
+			<textField pattern=" #,##0 VND">
+				<reportElement x="282" y="254" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Long"><![CDATA[$F{SoDu}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="26">
+			<textField evaluationTime="Report" pattern="" isBlankWhenNull="false">
+				<reportElement key="textField" x="516" y="6" width="36" height="19" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["" + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement key="textField" x="342" y="6" width="170" height="19" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Page " + $V{PAGE_NUMBER} + " of "]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement key="textField" x="1" y="6" width="209" height="19" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[new Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
