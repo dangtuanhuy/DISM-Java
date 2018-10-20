@@ -88,7 +88,7 @@ public class pnConfig extends javax.swing.JDialog {
         jPanel1.add(jLabel3);
         jLabel3.setBounds(60, 80, 56, 19);
 
-        txtServerName.setText("localhost");
+        txtServerName.setText("DESKTOP-0T1NQE8");
         jPanel1.add(txtServerName);
         txtServerName.setBounds(220, 72, 380, 30);
 
@@ -118,7 +118,7 @@ public class pnConfig extends javax.swing.JDialog {
         jPanel1.add(jLabel7);
         jLabel7.setBounds(60, 200, 83, 19);
 
-        txtPassword.setText("123");
+        txtPassword.setText("sa");
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPasswordActionPerformed(evt);
@@ -146,6 +146,11 @@ public class pnConfig extends javax.swing.JDialog {
                 chkPortDefaultStateChanged(evt);
             }
         });
+        chkPortDefault.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkPortDefaultActionPerformed(evt);
+            }
+        });
         jPanel1.add(chkPortDefault);
         chkPortDefault.setBounds(430, 237, 170, 30);
 
@@ -157,7 +162,7 @@ public class pnConfig extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btSave);
-        btSave.setBounds(250, 281, 97, 30);
+        btSave.setBounds(250, 281, 93, 30);
 
         btExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Delete.png"))); // NOI18N
         btExit.setText("Exit");
@@ -167,7 +172,7 @@ public class pnConfig extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btExit);
-        btExit.setBounds(370, 281, 89, 30);
+        btExit.setBounds(370, 281, 87, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/config_background.png"))); // NOI18N
         jPanel1.add(jLabel1);
@@ -234,6 +239,10 @@ public class pnConfig extends javax.swing.JDialog {
         validated = false;
         dispose();
     }//GEN-LAST:event_btExitActionPerformed
+
+    private void chkPortDefaultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkPortDefaultActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkPortDefaultActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
