@@ -114,7 +114,7 @@ public class tbDeposit {
         ArrayList<tbDeposit> listCus = new ArrayList();
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("SELECT a.ID, d.HoTen, a.SoTien, b.Ten, c.ATMCardID, a.ThoiGian, d.id FROM ((GiaoDich a INNER JOIN ATM b ON a.ATMID = b.ID) INNER JOIN ATMCard c ON a.ATMCardID = c.ID) INNER JOIN KhachHang d ON a.KHID = d.ID WHERE a.thaotac = 0 AND a.TrangThai = 0");
+            pst = cn.prepareCall("SELECT a.ID, d.HoTen, a.SoTien, b.ATM_Name, c.ATMCardID, a.ThoiGian, d.id FROM ((GiaoDich a INNER JOIN ATM b ON a.ATMID = b.ID) INNER JOIN ATMCard c ON a.ATMCardID = c.ID) INNER JOIN KhachHang d ON a.KHID = d.ID WHERE a.thaotac = 0 AND a.TrangThai = 0");
             rsCus = pst.executeQuery();
             while (rsCus.next()) {
                 tbDeposit record = new tbDeposit(rsCus.getInt(1), rsCus.getInt(5), rsCus.getString(2), rsCus.getString(4), rsCus.getLong(3), rsCus.getTimestamp(6), rsCus.getInt(7));
@@ -141,7 +141,7 @@ public class tbDeposit {
         tbDeposit record = null;
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("SELECT a.ID, d.HoTen, a.SoTien, b.Ten, c.ATMCardID, a.ThoiGian, d.id FROM ((GiaoDich a INNER JOIN ATM b ON a.ATMID = b.ID) INNER JOIN ATMCard c ON a.ATMCardID = c.ID) INNER JOIN KhachHang d ON a.KHID = d.ID WHERE a.thaotac = 0 AND a.id = ? AND a.TrangThai = 0");
+            pst = cn.prepareCall("SELECT a.ID, d.HoTen, a.SoTien, b.ATM_Name, c.ATMCardID, a.ThoiGian, d.id FROM ((GiaoDich a INNER JOIN ATM b ON a.ATMID = b.ID) INNER JOIN ATMCard c ON a.ATMCardID = c.ID) INNER JOIN KhachHang d ON a.KHID = d.ID WHERE a.thaotac = 0 AND a.id = ? AND a.TrangThai = 0");
             pst.setInt(1, id);
             rsCus = pst.executeQuery();
             if (rsCus.next()) {
@@ -219,7 +219,7 @@ public class tbDeposit {
         TreeMap<String, String> record = new TreeMap<>();
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("SELECT d.HoTen, d.STK, d.DiaChi, d.SoDu, b.Ten, b.DiaDiem, c.ATMCardID, a.SoTien, a.ThoiGian, a.TrangThai, a.ID, b.ID, c.ID, d.ID FROM ((GiaoDich a INNER JOIN ATM b ON a.ATMID = b.ID) INNER JOIN ATMCard c ON a.ATMCardID = c.ID) INNER JOIN KhachHang d ON a.KHID = d.ID WHERE a.thaotac = 0 AND a.id = ? AND a.TrangThai = 0");
+            pst = cn.prepareCall("SELECT d.HoTen, d.STK, d.DiaChi, d.SoDu, b.ATM_Name, b.DiaDiem, c.ATMCardID, a.SoTien, a.ThoiGian, a.TrangThai, a.ID, b.ID, c.ID, d.ID FROM ((GiaoDich a INNER JOIN ATM b ON a.ATMID = b.ID) INNER JOIN ATMCard c ON a.ATMCardID = c.ID) INNER JOIN KhachHang d ON a.KHID = d.ID WHERE a.thaotac = 0 AND a.id = ? AND a.TrangThai = 0");
             pst.setInt(1, id);
             rsCus = pst.executeQuery();
             if (rsCus.next()) {
