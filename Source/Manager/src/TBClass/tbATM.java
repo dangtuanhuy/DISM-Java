@@ -112,7 +112,7 @@ public class tbATM {
         int result = 0;
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("INSERT INTO [dbo].[ATM] ([ATM_Name],[DiaDiem],[TrangThai]) VALUES (?,?,?)");
+            pst = cn.prepareCall("INSERT INTO [dbo].[ATM] ([ATM_Name],[ATM_Place],[ATM_Status]) VALUES (?,?,?)");
             pst.setString(1, name);
             pst.setString(2, localtion);
             pst.setInt(3, status);
@@ -162,7 +162,7 @@ public class tbATM {
         int result = 0;
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("UPDATE [dbo].[ATM] SET [ATM_Name] = ?,[DiaDiem] = ?,[TrangThai] = ? WHERE ID = ?");
+            pst = cn.prepareCall("UPDATE [dbo].[ATM] SET [ATM_Name] = ?,[ATM_Place] = ?,[ATM_Status] = ? WHERE ID = ?");
             pst.setString(1, tbUpdate.name);
             pst.setString(2, tbUpdate.localtion);
             pst.setInt(3, tbUpdate.status);

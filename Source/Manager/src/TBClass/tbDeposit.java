@@ -219,7 +219,7 @@ public class tbDeposit {
         TreeMap<String, String> record = new TreeMap<>();
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("SELECT d.HoTen, d.STK, d.DiaChi, d.SoDu, b.ATM_Name, b.DiaDiem, c.ATMCardID, a.SoTien, a.ThoiGian, a.TrangThai, a.ID, b.ID, c.ID, d.ID FROM ((GiaoDich a INNER JOIN ATM b ON a.ATMID = b.ID) INNER JOIN ATMCard c ON a.ATMCardID = c.ID) INNER JOIN KhachHang d ON a.KHID = d.ID WHERE a.thaotac = 0 AND a.id = ? AND a.TrangThai = 0");
+            pst = cn.prepareCall("SELECT d.HoTen, d.STK, d.DiaChi, d.SoDu, b.ATM_Name, b.ATM_Place, c.ATMCardID, a.SoTien, a.ThoiGian, a.TrangThai, a.ID, b.ID, c.ID, d.ID FROM ((GiaoDich a INNER JOIN ATM b ON a.ATMID = b.ID) INNER JOIN ATMCard c ON a.ATMCardID = c.ID) INNER JOIN KhachHang d ON a.KHID = d.ID WHERE a.thaotac = 0 AND a.id = ? AND a.TrangThai = 0");
             pst.setInt(1, id);
             rsCus = pst.executeQuery();
             if (rsCus.next()) {

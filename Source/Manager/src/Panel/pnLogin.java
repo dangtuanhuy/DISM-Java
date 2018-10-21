@@ -98,7 +98,7 @@ public class pnLogin extends javax.swing.JDialog {
                 check = false;
             }
             
-            ResultSet rsManager = stManager.executeQuery("select * from Manager where TenDangNhap = '" + username + "' And MatKhau = '" + password + "'");
+            ResultSet rsManager = stManager.executeQuery("select * from Manager where Username = '" + username + "' And Password = '" + password + "'");
             if (rsManager.next()) {
                 tendangnhap = rsManager.getString(2);
                 id_manager = rsManager.getInt(1);
