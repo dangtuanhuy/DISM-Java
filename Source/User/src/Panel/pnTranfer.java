@@ -105,7 +105,7 @@ public class pnTranfer extends javax.swing.JPanel {
         add(btnHome);
         btnHome.setBounds(20, 530, 190, 60);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/background-stk.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BannerTran.jpg"))); // NOI18N
         add(jLabel1);
         jLabel1.setBounds(0, 0, 931, 626);
     }// </editor-fold>//GEN-END:initComponents

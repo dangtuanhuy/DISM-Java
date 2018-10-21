@@ -95,7 +95,7 @@ public class pnMain extends javax.swing.JPanel {
         add(btnChuyen);
         btnChuyen.setBounds(580, 410, 345, 100);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/background.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Banner1.jpg"))); // NOI18N
         add(jLabel1);
         jLabel1.setBounds(0, 0, 931, 626);
     }// </editor-fold>//GEN-END:initComponents

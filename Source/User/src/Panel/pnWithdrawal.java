@@ -153,7 +153,7 @@ public class pnWithdrawal extends javax.swing.JPanel {
         jPanel1.add(btnBack);
         btnBack.setBounds(370, 540, 180, 60);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/background.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Banner1.jpg"))); // NOI18N
         jPanel1.add(jLabel1);
         jLabel1.setBounds(0, 0, 931, 626);
 

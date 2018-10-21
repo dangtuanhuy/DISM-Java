@@ -126,7 +126,7 @@ public class pnPrint extends javax.swing.JPanel {
         add(btnPrint);
         btnPrint.setBounds(720, 490, 190, 67);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/background.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("E:\\JAVA2\\TestProjectJava\\DISM - Java\\Source\\User\\src\\Images\\BannerTran.jpg")); // NOI18N
         add(jLabel1);
         jLabel1.setBounds(0, 0, 931, 626);
     }// </editor-fold>//GEN-END:initComponents
