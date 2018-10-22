@@ -23,7 +23,7 @@ public class tbTransaction {
 
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("INSERT INTO [dbo].[GiaoDich] ([KHID],[KHID_Sub],[ATMID],[ATMCardID],[ThaoTac],[SoTien],[ThoiGian],[TrangThai],[SoDu]) VALUES (?,?,?,?,?,?,default,?,?)");
+            pst = cn.prepareCall("INSERT INTO [dbo].[GiaoDich] ([TS_CustomerID],[TS_Customer_Sub],[ATMID],[ATMCardID],[TS_Manipulation],[TS_Money],[TS_Date],[TS_Status],[TS_Blance]) VALUES (?,?,?,?,?,?,default,?,?)");
             pst.setInt(1, khid);
             pst.setInt(2, 0);
             pst.setInt(3, atm);
@@ -68,7 +68,7 @@ public class tbTransaction {
                 sotienmaxlan = Caidat.getLong(5);
                 sotienmaxngay = Caidat.getLong(6);
             }
-            pst = cn.prepareCall("SELECT COUNT(ID) FROM GiaoDich WHERE ThaoTac = 1 AND ATMCardID = ? AND ThoiGian > CONVERT(datetime, '" + calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH) + 1) + "-" + calendar.get(Calendar.DAY_OF_MONTH) + " 00:00:00') AND ThoiGian < CONVERT(datetime, '" + calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH) + 1) + "-" + calendar.get(Calendar.DAY_OF_MONTH) + " 23:59:59')");
+            pst = cn.prepareCall("SELECT COUNT(ID) FROM GiaoDich WHERE TS_Manipulation = 1 AND ATMCardID = ? AND TS_Date > CONVERT(datetime, '" + calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH) + 1) + "-" + calendar.get(Calendar.DAY_OF_MONTH) + " 00:00:00') AND TS_Date < CONVERT(datetime, '" + calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH) + 1) + "-" + calendar.get(Calendar.DAY_OF_MONTH) + " 23:59:59')");
             pst.setInt(1, card);
             SoLan = pst.executeQuery();
             if (SoLan.next()) {
@@ -82,7 +82,7 @@ public class tbTransaction {
                 }
             }
 
-            pst = cn.prepareCall("SELECT SUM(SoTien) FROM GiaoDich WHERE ThaoTac = 1 AND ATMCardID = ? AND ThoiGian > CONVERT(datetime, '" + calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH) + 1) + "-" + calendar.get(Calendar.DAY_OF_MONTH) + " 00:00:00') AND ThoiGian < CONVERT(datetime, '" + calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH) + 1) + "-" + calendar.get(Calendar.DAY_OF_MONTH) + " 23:59:59')");
+            pst = cn.prepareCall("SELECT SUM(TS_Money) FROM GiaoDich WHERE TS_Manipulation = 1 AND ATMCardID = ? AND TS_Date > CONVERT(datetime, '" + calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH) + 1) + "-" + calendar.get(Calendar.DAY_OF_MONTH) + " 00:00:00') AND TS_Date < CONVERT(datetime, '" + calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH) + 1) + "-" + calendar.get(Calendar.DAY_OF_MONTH) + " 23:59:59')");
             pst.setInt(1, card);
             SoLan = pst.executeQuery();
             if (SoLan.next()) {
@@ -96,7 +96,7 @@ public class tbTransaction {
                 }
             }
 
-            pst = cn.prepareCall("SELECT SoDu FROM KhachHang WHERE ID = ?");
+            pst = cn.prepareCall("SELECT Cus_Blance FROM KhachHang WHERE ID = ?");
             pst.setInt(1, khid);
             SoLan = pst.executeQuery();
             if (SoLan.next()) {
@@ -165,7 +165,7 @@ public class tbTransaction {
         int record = 0;
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("SELECT KHID FROM ATMCard WHERE ATMCardID = ?");
+            pst = cn.prepareCall("SELECT Customer_ID FROM ATMCard WHERE ATMCardID = ?");
             pst.setInt(1, id);
             rsATM = pst.executeQuery();
             if (rsATM.next()) {
@@ -201,13 +201,13 @@ public class tbTransaction {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
             
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("SELECT phiruttien FROM CaiDat WHERE ID = 1");
+            pst = cn.prepareCall("SELECT ST_Withdrawal_Fee FROM CaiDat WHERE ID = 1");
             rs = pst.executeQuery();
             if (rs.next()) {
                 phiruttien = rs.getInt(1);
             }
             
-            pst = cn.prepareCall("INSERT INTO [dbo].[GiaoDich] ([KHID],[KHID_Sub],[ATMID],[ATMCardID],[ThaoTac],[SoTien],[ThoiGian],[TrangThai],[SoDu]) VALUES (?,?,?,?,?,?,default,?,?)");
+            pst = cn.prepareCall("INSERT INTO [dbo].[GiaoDich] ([TS_CustomerID],[TS_Customer_Sub],[ATMID],[ATMCardID],[TS_Manipulation],[TS_Money],[TS_Date],[TS_Status],[TS_Blance]) VALUES (?,?,?,?,?,?,default,?,?)");
             pst.setInt(1, khid);
             pst.setInt(2, 0);
             pst.setInt(3, atm);
@@ -219,7 +219,7 @@ public class tbTransaction {
             result = pst.executeUpdate();
             if (result > 0) {
                 cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-                psd = cn.prepareCall("UPDATE KhachHang SET SoDu  = SoDu - ? WHERE ID = ?");
+                psd = cn.prepareCall("UPDATE KhachHang SET Cus_Blance  = Cus_Blance - ? WHERE ID = ?");
                 psd.setLong(1, amount + phiruttien);
                 psd.setInt(2, khid);
                 success = psd.executeUpdate();
@@ -342,7 +342,7 @@ public class tbTransaction {
         long record = 0;
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("SELECT SoDu FROM KhachHang WHERE id = ?");
+            pst = cn.prepareCall("SELECT Cus_Blance FROM KhachHang WHERE id = ?");
             pst.setInt(1, id);
             rsCus = pst.executeQuery();
             if (rsCus.next()) {
@@ -369,7 +369,7 @@ public class tbTransaction {
         long record = 0;
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("SELECT PhiRutTien FROM CaiDat WHERE id = 1");
+            pst = cn.prepareCall("SELECT ST_Withdrawal_Fee FROM CaiDat WHERE id = 1");
             rsCus = pst.executeQuery();
             if (rsCus.next()) {
                  record = rsCus.getLong(1);
@@ -395,7 +395,7 @@ public class tbTransaction {
         ArrayList record = new ArrayList();
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("SELECT HoTen, SoDu FROM KhachHang WHERE id = ?");
+            pst = cn.prepareCall("SELECT Cus_Name, Cus_Blance FROM KhachHang WHERE id = ?");
             pst.setInt(1, khid);
             rsCus = pst.executeQuery();
             if (rsCus.next()) {
@@ -423,7 +423,7 @@ public class tbTransaction {
         ArrayList record = new ArrayList();
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("SELECT HoTen, NgaySinh, DiaChi FROM KhachHang WHERE STK = ?");
+            pst = cn.prepareCall("SELECT Cus_Name, Cus_Birth, Cus_Address FROM KhachHang WHERE Cus_Account = ?");
             pst.setString(1, khid);
             rsCus = pst.executeQuery();
             if (rsCus.next()) {
@@ -460,13 +460,13 @@ public class tbTransaction {
                 sodumin = Caidat.getLong(2);
             }
             
-            pst = cn.prepareCall("SELECT SoDu FROM KhachHang WHERE STK = ?");
+            pst = cn.prepareCall("SELECT Cus_Blance FROM KhachHang WHERE Cus_Account = ?");
             pst.setString(1, stk);
             SoLan = pst.executeQuery();
             if (SoLan.next()) {
                 if (amount > (SoLan.getLong(1) - sodumin)) {
                     if (lang) {
-                        JOptionPane.showMessageDialog(null, "Qúa số dư");
+                        JOptionPane.showMessageDialog(null, "Quá số dư");
                     } else {
                         JOptionPane.showMessageDialog(null, "Too balance");
                     }
@@ -520,7 +520,7 @@ public class tbTransaction {
 
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("INSERT INTO [dbo].[GiaoDich] ([KHID],[KHID_Sub],[ATMID],[ATMCardID],[ThaoTac],[SoTien],[ThoiGian],[TrangThai],[SoDu]) VALUES (?,?,?,?,?,?,default,?,?)");
+            pst = cn.prepareCall("INSERT INTO [dbo].[GiaoDich] ([TS_CustomerID],[TS_Customer_Sub],[ATMID],[ATMCardID],[TS_Manipulation],[TS_Money],[TS_Date],[TS_Status],[TS_Blance]) VALUES (?,?,?,?,?,?,default,?,?)");
             pst.setInt(1, khid);
             pst.setInt(2, kh_sub);
             pst.setInt(3, atm);
@@ -531,12 +531,12 @@ public class tbTransaction {
             pst.setInt(8, 0);
             result = pst.executeUpdate();
             if (result > 0) {
-                psd = cn.prepareCall("UPDATE KhachHang SET SoDu  = SoDu - ? WHERE ID = ?");
+                psd = cn.prepareCall("UPDATE KhachHang SET Cus_Blance  = Cus_Blance - ? WHERE ID = ?");
                 psd.setLong(1, amount);
                 psd.setInt(2, khid);
                 success = psd.executeUpdate();
                 
-                psd = cn.prepareCall("UPDATE KhachHang SET SoDu  = SoDu + ? WHERE ID = ?");
+                psd = cn.prepareCall("UPDATE KhachHang SET Cus_Blance  = Cus_Blance + ? WHERE ID = ?");
                 psd.setLong(1, amount);
                 psd.setInt(2, kh_sub);
                 success = psd.executeUpdate();
@@ -565,7 +565,7 @@ public class tbTransaction {
         int record = 0;
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("SELECT ID FROM KhachHang WHERE STK = ?");
+            pst = cn.prepareCall("SELECT ID FROM KhachHang WHERE Cus_Account = ?");
             pst.setString(1, stk);
             rsATM = pst.executeQuery();
             if (rsATM.next()) {

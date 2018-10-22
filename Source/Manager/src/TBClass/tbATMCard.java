@@ -158,7 +158,7 @@ public class tbATMCard {
         ArrayList<tbATMCard> listCus = new ArrayList();
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("SELECT * FROM ATMCard WHERE KHID = ?");
+            pst = cn.prepareCall("SELECT * FROM ATMCard WHERE Customer_ID = ?");
             pst.setInt(1, khid);
             rsCus = pst.executeQuery();
             while (rsCus.next()) {
@@ -213,7 +213,7 @@ public class tbATMCard {
         String name = "";
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("SELECT HoTen FROM KhachHang WHERE id = ?");
+            pst = cn.prepareCall("SELECT Cus_Name FROM KhachHang WHERE id = ?");
             pst.setInt(1, khid);
             rsCus = pst.executeQuery();
             while (rsCus.next()) {
@@ -267,7 +267,7 @@ public class tbATMCard {
         ArrayList listInfo = new ArrayList();
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("SELECT a.*, b.* FrOM ATMCard a JOIN KhachHang b ON a.KHID = b.ID Where a.ID = ?");
+            pst = cn.prepareCall("SELECT a.*, b.* FrOM ATMCard a JOIN KhachHang b ON a.Customer_ID = b.ID Where a.ID = ?");
             pst.setInt(1, id);
             rsCus = pst.executeQuery();
             if (rsCus.next()) {
@@ -307,7 +307,7 @@ public class tbATMCard {
         ArrayList listInfo = new ArrayList();
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("SELECT a.*, b.* FrOM ATMCard a JOIN KhachHang b ON a.KHID = b.ID Where a.atmcardid = ?");
+            pst = cn.prepareCall("SELECT a.*, b.* FrOM ATMCard a JOIN KhachHang b ON a.Customer_ID = b.ID Where a.atmcardid = ?");
             pst.setInt(1, atmcardid);
             rsCus = pst.executeQuery();
             if (rsCus.next()) {
@@ -353,7 +353,7 @@ public class tbATMCard {
             if (rsCus.next()) {
                 nextStk = rsCus.getInt(1) + 10000;
                 cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-                pst = cn.prepareCall("INSERT INTO [dbo].[ATMCard] ([ATMCardID],[PIN],[KHID],[ThoiGian],[ThoiHan],[TrangThai]) VALUES (?,?,?,?,?,?)");
+                pst = cn.prepareCall("INSERT INTO [dbo].[ATMCard] ([ATMCardID],[PIN],[Customer_ID],[ATMCard_Active],[ATMCard_Expiry],[ATMCard_Status]) VALUES (?,?,?,?,?,?)");
                 pst.setInt(1, nextStk);
                 pst.setInt(2, tbCus.pin);
                 pst.setInt(3, tbCus.khid);
@@ -436,7 +436,7 @@ public class tbATMCard {
         int result = 0;
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("UPDATE [dbo].[ATMCard] SET [PIN] = ?,[KHID] = ?,[ThoiGian] = ?,[ThoiHan] = ?,[TrangThai] = ? WHERE ATMCardID = ?");
+            pst = cn.prepareCall("UPDATE [dbo].[ATMCard] SET [PIN] = ?,[Customer_ID] = ?,[ATMCard_Active] = ?,[ATMCard_Expiry] = ?,[ATMCard_Status] = ? WHERE ATMCardID = ?");
             pst.setInt(1, tbCus.pin);
             pst.setInt(2, tbCus.khid);
             pst.setDate(3, new java.sql.Date(tbCus.thoigian.getTime()));

@@ -235,7 +235,7 @@ public class tbCustomer {
             if (rsCus.next()) {
                 nextStk = rsCus.getInt(1) + 100000000;
                 cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-                pst = cn.prepareCall("INSERT INTO [dbo].[KhachHang] ([STK],[HoTen],[DiaChi],[Email],[SoDienThoai],[GioiTinh],[TrangThai],[SoDu],[NgaySinh],[SoCMND]) VALUES (?,?,?,?,?,?,?,?,?,?)");
+                pst = cn.prepareCall("INSERT INTO [dbo].[KhachHang] ([Cus_Account],[Cus_Name],[Cus_Address],[Cus_Email],[Cus_Phone],[Cus_Gender],[Cus_Status],[Cus_Blance],[Cus_Birth],[Cus_IdentityCard]) VALUES (?,?,?,?,?,?,?,?,?,?)");
                 pst.setInt(1, nextStk);
                 pst.setString(2, tbCus.name);
                 pst.setString(3, tbCus.diachi);
@@ -295,7 +295,7 @@ public class tbCustomer {
         int result = 0;
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("UPDATE [dbo].[KhachHang] SET [HoTen] = ?,[DiaChi] = ?,[Email] = ?,[SoDienThoai] = ?,[GioiTinh] = ?,[TrangThai] = ?,[NgaySinh] = ?,[SoCMND] = ? WHERE ID = ?");
+            pst = cn.prepareCall("UPDATE [dbo].[KhachHang] SET [Cus_Name] = ?,[Cus_Address] = ?,[Cus_Email] = ?,[Cus_Phone] = ?,[Cus_Gender] = ?,[Cus_Status] = ?,[Cus_Birth] = ?,[Cus_IdentityCard] = ? WHERE ID = ?");
             pst.setString(1, tbCus.name);
             pst.setString(2, tbCus.diachi);
             pst.setString(3, tbCus.email);
@@ -330,11 +330,11 @@ public class tbCustomer {
         boolean status = false;
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            giaodich = cn.prepareCall("SELECT * FROM GiaoDich WHERE KHID = ?");
+            giaodich = cn.prepareCall("SELECT * FROM GiaoDich WHERE TS_CustomerID = ?");
             giaodich.setInt(1, id);
             rsGiaoDich = giaodich.executeQuery();
 
-            atmcard = cn.prepareCall("SELECT * FROM ATMCard WHERE KHID = ?");
+            atmcard = cn.prepareCall("SELECT * FROM ATMCard WHERE Customer_ID = ?");
             atmcard.setInt(1, id);
             rsATMCard = atmcard.executeQuery();
 
