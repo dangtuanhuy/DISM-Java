@@ -89,7 +89,7 @@ public class tbSetting {
         tbSetting record = null;
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("SELECT * FROM CaiDat WHERE ID = 1");
+            pst = cn.prepareCall("SELECT * FROM Setting WHERE ID = 1");
             rsCus = pst.executeQuery();
             if (rsCus.next()) {
                 record = new tbSetting(rsCus.getLong(2), rsCus.getLong(4), rsCus.getLong(5), rsCus.getLong(6), rsCus.getLong(7), rsCus.getLong(8), rsCus.getInt(3));
@@ -114,7 +114,7 @@ public class tbSetting {
         int result = 0;
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("UPDATE [dbo].[CaiDat] SET [ST_BlanceMin] = ?,[ST_Withdrawal_MaxDay] = ?,[ST_Withdrawal_AmountMin] = ?,[ST_Withdrawal_AmountMax] = ?,[ST_Withdrawal_AmoutDayMax] = ?,[ST_Withdrawal_Fee] = ?,[ST_ViewBlacce_Fee] = ? WHERE ID = 1");
+            pst = cn.prepareCall("UPDATE [dbo].[Setting] SET [ST_BlanceMin] = ?,[ST_Withdrawal_MaxDay] = ?,[ST_Withdrawal_AmountMin] = ?,[ST_Withdrawal_AmountMax] = ?,[ST_Withdrawal_AmoutDayMax] = ?,[ST_Withdrawal_Fee] = ?,[ST_ViewBlacce_Fee] = ? WHERE ID = 1");
             pst.setLong(1, tbCus.sodumin);
             pst.setInt(2, tbCus.lanrutmax);
             pst.setLong(3, tbCus.sotienminlan);

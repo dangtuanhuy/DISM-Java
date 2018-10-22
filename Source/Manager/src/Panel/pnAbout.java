@@ -16,8 +16,6 @@ public class pnAbout extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -38,34 +36,26 @@ public class pnAbout extends javax.swing.JDialog {
         jPanel1.add(jLabel3);
         jLabel3.setBounds(80, 120, 150, 16);
 
-        jLabel4.setText("NGUYEN CANH KHANH TRINH (LEADER)");
+        jLabel4.setText("HUY ĐẶNG TUẤN A17007 (LEADER)");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(250, 120, 230, 16);
+        jLabel4.setBounds(250, 120, 230, 14);
 
-        jLabel5.setText("LUONG TAN CHUC");
+        jLabel5.setText("PHONG TRUNG TRẦN");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(250, 150, 120, 16);
-
-        jLabel6.setText("NGUYEN DUY ANH");
-        jPanel1.add(jLabel6);
-        jLabel6.setBounds(250, 180, 120, 16);
-
-        jLabel7.setText("TRAN MINH PHAT");
-        jPanel1.add(jLabel7);
-        jLabel7.setBounds(250, 210, 101, 16);
+        jLabel5.setBounds(250, 150, 120, 14);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel8.setText("CONTACT US :");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(80, 240, 110, 16);
+        jLabel8.setBounds(130, 190, 110, 16);
 
-        jLabel9.setText("01685.000.113");
+        jLabel9.setText("+84963505927");
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(250, 240, 120, 16);
+        jLabel9.setBounds(250, 190, 120, 14);
 
-        jLabel10.setText("Boyvk19@Gmail.com");
+        jLabel10.setText("dthuya17007@cusc.ctu.edu.vn");
         jPanel1.add(jLabel10);
-        jLabel10.setBounds(250, 270, 130, 16);
+        jLabel10.setBounds(250, 220, 130, 14);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/main-background (Copy).jpg"))); // NOI18N
         jPanel1.add(jLabel1);
@@ -93,8 +83,6 @@ public class pnAbout extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;

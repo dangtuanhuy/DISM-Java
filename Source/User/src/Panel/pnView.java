@@ -74,7 +74,7 @@ public class pnView extends javax.swing.JPanel {
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("NGUYỄN CẢNH KHÁNH TRÌNH");
+        jLabel7.setText("ĐẶNG TUẤN HUY");
         add(jLabel7);
         jLabel7.setBounds(320, 270, 330, 25);
 

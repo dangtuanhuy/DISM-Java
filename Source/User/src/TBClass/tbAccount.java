@@ -18,7 +18,7 @@ public class tbAccount {
         boolean record = false;
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("SELECT ATMCardID FROM ATMCard WHERE ATMCardID = ? AND ATMCard_Status = 1 AND (SELECT Cus_Status FROM KhachHang WHERE ID = (SELECT Customer_ID FROM ATMCARD WHERE ATMCARDID = ?)) = 1");
+            pst = cn.prepareCall("SELECT ATMCardID FROM ATMCard WHERE ATMCardID = ? AND ATMCard_Status = 1 AND (SELECT Cus_Status FROM Customer WHERE ID = (SELECT Customer_ID FROM ATMCARD WHERE ATMCARDID = ?)) = 1");
             pst.setInt(1, id);
             pst.setInt(2, id);
             rsATM = pst.executeQuery();
@@ -52,7 +52,7 @@ public class tbAccount {
         boolean record = false;
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("SELECT ID FROM KhachHang WHERE Cus_Account = ?");
+            pst = cn.prepareCall("SELECT ID FROM Customer WHERE Cus_Account = ?");
             pst.setString(1, id);
             rsATM = pst.executeQuery();
             if (rsATM.next()) {
@@ -85,7 +85,7 @@ public class tbAccount {
         String record = "";
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("SELECT Cus_Account FROM KhachHang WHERE ID = (SELECT Customer_ID FROM ATMCard WHERE ATMCARDID = ?)");
+            pst = cn.prepareCall("SELECT Cus_Account FROM Customer WHERE ID = (SELECT Customer_ID FROM ATMCard WHERE ATMCARDID = ?)");
             pst.setInt(1, kh);
             rsATM = pst.executeQuery();
             if (rsATM.next()) {
@@ -152,7 +152,7 @@ public class tbAccount {
         String record = null;
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("SELECT Cus_Name FROM KhachHang WHERE ID = (SELECT Customer_ID FROM ATMCard WHERE ATMCardID = ?)");
+            pst = cn.prepareCall("SELECT Cus_Name FROM Customer WHERE ID = (SELECT Customer_ID FROM ATMCard WHERE ATMCardID = ?)");
             pst.setInt(1, id);
             rsATM = pst.executeQuery();
             if (rsATM.next()) {

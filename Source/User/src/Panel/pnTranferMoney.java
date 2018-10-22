@@ -121,7 +121,7 @@ public class pnTranferMoney extends javax.swing.JPanel {
 
         lbDob.setFont(new java.awt.Font("Tahoma", 0, 26)); // NOI18N
         lbDob.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbDob.setText("20/10/1994");
+        lbDob.setText("02-01-1997");
         add(lbDob);
         lbDob.setBounds(510, 300, 370, 32);
 
@@ -131,13 +131,13 @@ public class pnTranferMoney extends javax.swing.JPanel {
 
         lbAddress.setFont(new java.awt.Font("Tahoma", 0, 26)); // NOI18N
         lbAddress.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbAddress.setText("CAN LỘC - HÀ TĨNH");
+        lbAddress.setText("CHÂU THÀNH - BẾN TRE");
         add(lbAddress);
         lbAddress.setBounds(510, 360, 380, 32);
 
         lbName.setFont(new java.awt.Font("Tahoma", 0, 26)); // NOI18N
         lbName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbName.setText("NGUYỄN CẢNH KHÁNH TRÌNH");
+        lbName.setText("ĐẶNG TUẤN HUY");
         add(lbName);
         lbName.setBounds(510, 240, 390, 32);
 

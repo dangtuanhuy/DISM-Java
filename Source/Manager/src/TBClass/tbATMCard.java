@@ -213,7 +213,7 @@ public class tbATMCard {
         String name = "";
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("SELECT Cus_Name FROM KhachHang WHERE id = ?");
+            pst = cn.prepareCall("SELECT Cus_Name FROM Customer WHERE id = ?");
             pst.setInt(1, khid);
             rsCus = pst.executeQuery();
             while (rsCus.next()) {
@@ -267,7 +267,7 @@ public class tbATMCard {
         ArrayList listInfo = new ArrayList();
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("SELECT a.*, b.* FrOM ATMCard a JOIN KhachHang b ON a.Customer_ID = b.ID Where a.ID = ?");
+            pst = cn.prepareCall("SELECT a.*, b.* FrOM ATMCard a JOIN Customer b ON a.Customer_ID = b.ID Where a.ID = ?");
             pst.setInt(1, id);
             rsCus = pst.executeQuery();
             if (rsCus.next()) {
@@ -307,7 +307,7 @@ public class tbATMCard {
         ArrayList listInfo = new ArrayList();
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("SELECT a.*, b.* FrOM ATMCard a JOIN KhachHang b ON a.Customer_ID = b.ID Where a.atmcardid = ?");
+            pst = cn.prepareCall("SELECT a.*, b.* FrOM ATMCard a JOIN Customer b ON a.Customer_ID = b.ID Where a.atmcardid = ?");
             pst.setInt(1, atmcardid);
             rsCus = pst.executeQuery();
             if (rsCus.next()) {
@@ -466,7 +466,7 @@ public class tbATMCard {
         boolean status = false;
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            giaodich = cn.prepareCall("SELECT * FROM GiaoDich WHERE ATMCARDID = ?");
+            giaodich = cn.prepareCall("SELECT * FROM [dbo].[Transaction] WHERE ATMCARDID = ?");
             giaodich.setInt(1, cardid);
             rsGiaoDich = giaodich.executeQuery();
 

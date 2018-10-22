@@ -190,7 +190,7 @@ public class tbATM {
         boolean status = false;
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            record = cn.prepareCall("SELECT * FROM GiaoDich WHERE ATMID = ?");
+            record = cn.prepareCall("SELECT * FROM [dbo].[Transaction] WHERE ATMID = ?");
             record.setInt(1, id);
             rsRecord = record.executeQuery();
             if (!rsRecord.next()) {

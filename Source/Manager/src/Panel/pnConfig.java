@@ -174,7 +174,7 @@ public class pnConfig extends javax.swing.JDialog {
         jPanel1.add(btExit);
         btExit.setBounds(370, 281, 87, 30);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/config_background.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/configSQL.jpg"))); // NOI18N
         jPanel1.add(jLabel1);
         jLabel1.setBounds(0, 0, 680, 330);
 
