@@ -148,7 +148,7 @@ public class tbTransaction {
         ArrayList<tbTransaction> listCus = new ArrayList();
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("SELECT a.ID, b.HoTen, c.Ten, d.ATMCardID, a.ThaoTac, a.SoTien, a.ThoiGian, a.TrangThai, a.KHID_Sub FROM (((GiaoDich a JOIN KhachHang b ON a.KHID = b.ID) JOIN ATM c ON a.ATMID = c.ID) JOIN ATMCard d ON a.ATMCardID = d.ID)");
+            pst = cn.prepareCall("SELECT a.ID, b.Cus_Name, c.ATM_Name, d.ATMCardID, a.TS_Manipulation, a.TS_Money, a.TS_Date, a.TS_Status, a.TS_Customer_Sub FROM ((([dbo].[Transaction] a JOIN Customer b ON a.TS_CustomerID = b.ID) JOIN ATM c ON a.ATMID = c.ID) JOIN ATMCard d ON a.ATMCardID = d.ID)");
             rsCus = pst.executeQuery();
             while (rsCus.next()) {
                 tbTransaction record = new tbTransaction(rsCus.getInt(1), rsCus.getInt(9), rsCus.getInt(5), rsCus.getInt(4), rsCus.getLong(6), rsCus.getTimestamp(7), rsCus.getString(2), rsCus.getString(3));
@@ -175,7 +175,7 @@ public class tbTransaction {
         String name = "";
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("SELECT HoTen FROM KhachHang WHERE id = ?");
+            pst = cn.prepareCall("SELECT Cus_Name FROM Customer WHERE id = ?");
             pst.setInt(1, khid);
             rsCus = pst.executeQuery();
             while (rsCus.next()) {
@@ -246,7 +246,7 @@ public class tbTransaction {
 
         ArrayList<tbTransaction> listCus = new ArrayList();
         try {
-            sql = "SELECT a.ID, b.HoTen, c.Ten, d.ATMCardID, a.ThaoTac, a.SoTien, a.ThoiGian, a.TrangThai, a.KHID_Sub FROM (((GiaoDich a JOIN KhachHang b ON a.KHID = b.ID) JOIN ATM c ON a.ATMID = c.ID) JOIN ATMCard d ON a.ATMCardID = d.ID)" + query + act + and + d;
+            sql = "SELECT a.ID, b.Cus_Name, c.ATM_Name, d.ATMCardID, a.TS_Manipulation, a.TS_Money, a.TS_Date, a.TS_Status, a.TS_Customer_Sub FROM (((Transaction a JOIN Customer b ON a.TS_CustomerID = b.ID) JOIN ATM c ON a.ATMID = c.ID) JOIN ATMCard d ON a.ATMCardID = d.ID)" + query + act + and + d;
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
             pst = cn.prepareCall(sql);
             rsCus = pst.executeQuery();
@@ -276,7 +276,7 @@ public class tbTransaction {
         ArrayList<tbTransaction> listCus = new ArrayList();
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("SELECT a.ID, b.HoTen, c.Ten, d.ATMCardID, a.ThaoTac, a.SoTien, a.ThoiGian, a.TrangThai, a.KHID_Sub FROM (((GiaoDich a JOIN KhachHang b ON a.KHID = b.ID) JOIN ATM c ON a.ATMID = c.ID) JOIN ATMCard d ON a.ATMCardID = d.ID) WHERE a.KHID = ?");
+            pst = cn.prepareCall("SELECT a.ID, b.Cus_Name, c.ATM_Name, d.ATMCardID, a.TS_Manipulation, a.TS_Money, a.TS_Date, a.TS_Status, a.TS_Customer_Sub FROM (((Transaction a JOIN Customer b ON a.TS_CustomerID = b.ID) JOIN ATM c ON a.ATMID = c.ID) JOIN ATMCard d ON a.ATMCardID = d.ID) WHERE a.TS_CustomerID = ?");
             pst.setInt(1, khid);
             rsCus = pst.executeQuery();
             while (rsCus.next()) {
@@ -305,7 +305,7 @@ public class tbTransaction {
         ArrayList<tbTransaction> listCus = new ArrayList();
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("SELECT a.ID, b.HoTen, c.Ten, d.ATMCardID, a.ThaoTac, a.SoTien, a.ThoiGian, a.TrangThai, a.KHID_Sub FROM (((GiaoDich a JOIN KhachHang b ON a.KHID = b.ID) JOIN ATM c ON a.ATMID = c.ID) JOIN ATMCard d ON a.ATMCardID = d.ID) WHERE a.ATMCARDID = ?");
+            pst = cn.prepareCall("SELECT a.ID, b.Cus_Name, c.ATM_Name, d.ATMCardID, a.TS_Manipulation, a.TS_Money, a.TS_Date, a.TS_Status, a.TS_Customer_Sub FROM (((Transaction a JOIN Customer b ON a.TS_CustomerID = b.ID) JOIN ATM c ON a.ATMID = c.ID) JOIN ATMCard d ON a.ATMCardID = d.ID) WHERE a.ATMCARDID = ?");
             pst.setInt(1, cardid);
             rsCus = pst.executeQuery();
             while (rsCus.next()) {

@@ -53,11 +53,11 @@ public class pnError extends javax.swing.JPanel {
         lbName.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
         lbName.setForeground(new java.awt.Color(255, 0, 0));
         lbName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbName.setText("Khanh Trinh");
+        lbName.setText("Message");
         add(lbName);
         lbName.setBounds(200, 210, 560, 50);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/background.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Banner1.jpg"))); // NOI18N
         add(jLabel1);
         jLabel1.setBounds(0, 0, 931, 626);
     }// </editor-fold>//GEN-END:initComponents

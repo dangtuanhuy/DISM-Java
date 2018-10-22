@@ -114,7 +114,7 @@ public class tbDeposit {
         ArrayList<tbDeposit> listCus = new ArrayList();
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("SELECT a.ID, d.HoTen, a.SoTien, b.Ten, c.ATMCardID, a.ThoiGian, d.id FROM ((GiaoDich a INNER JOIN ATM b ON a.ATMID = b.ID) INNER JOIN ATMCard c ON a.ATMCardID = c.ID) INNER JOIN KhachHang d ON a.KHID = d.ID WHERE a.thaotac = 0 AND a.TrangThai = 0");
+            pst = cn.prepareCall("SELECT a.ID, d.Cus_Name, a.TS_Money, b.ATM_Name, c.ATMCardID, a.TS_Date, d.id FROM (([dbo].[Transaction] a INNER JOIN ATM b ON a.ATMID = b.ID) INNER JOIN ATMCard c ON a.ATMCardID = c.ID) INNER JOIN Customer d ON a.TS_CustomerID = d.ID WHERE a.TS_Manipulation = 0 AND a.TS_Status = 0");
             rsCus = pst.executeQuery();
             while (rsCus.next()) {
                 tbDeposit record = new tbDeposit(rsCus.getInt(1), rsCus.getInt(5), rsCus.getString(2), rsCus.getString(4), rsCus.getLong(3), rsCus.getTimestamp(6), rsCus.getInt(7));
@@ -141,7 +141,7 @@ public class tbDeposit {
         tbDeposit record = null;
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("SELECT a.ID, d.HoTen, a.SoTien, b.Ten, c.ATMCardID, a.ThoiGian, d.id FROM ((GiaoDich a INNER JOIN ATM b ON a.ATMID = b.ID) INNER JOIN ATMCard c ON a.ATMCardID = c.ID) INNER JOIN KhachHang d ON a.KHID = d.ID WHERE a.thaotac = 0 AND a.id = ? AND a.TrangThai = 0");
+            pst = cn.prepareCall("SELECT a.ID, d.Cus_Name, a.TS_Money, b.ATM_Name, c.ATMCardID, a.TS_Date, d.id FROM (([dbo].[Transaction] a INNER JOIN ATM b ON a.ATMID = b.ID) INNER JOIN ATMCard c ON a.ATMCardID = c.ID) INNER JOIN Customer d ON a.TS_CustomerID = d.ID WHERE a.TS_Manipulation = 0 AND a.id = ? AND a.TS_Status = 0");
             pst.setInt(1, id);
             rsCus = pst.executeQuery();
             if (rsCus.next()) {
@@ -167,12 +167,13 @@ public class tbDeposit {
         int result = 0, success = 0;
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("UPDATE [dbo].[KhachHang] SET [SoDu] = SoDu + ? WHERE ID = ?");
+            pst = cn.prepareCall("UPDATE [dbo].[Customer] SET [Cus_Blance] = Cus_Blance + ? WHERE ID = ?");
+            //SoDu
             pst.setLong(1, money);
             pst.setInt(2, khid);
             result = pst.executeUpdate();
             if (result > 0) {
-                psd = cn.prepareCall("UPDATE [dbo].[GiaoDich] SET [TrangThai] = 1 WHERE ID = ?");
+                psd = cn.prepareCall("UPDATE [dbo].[Transaction] SET [TS_Status] = 1 WHERE ID = ?");
                 psd.setInt(1, tranid);
                 success = psd.executeUpdate();
             }
@@ -196,7 +197,7 @@ public class tbDeposit {
         int result = 0;
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("DELETE FROM GiaoDich WHERE ID = ?");
+            pst = cn.prepareCall("DELETE FROM [dbo].[Transaction] WHERE ID = ?");
             pst.setInt(1, id);
             result = pst.executeUpdate();
         } catch (SQLException ex) {
@@ -219,7 +220,7 @@ public class tbDeposit {
         TreeMap<String, String> record = new TreeMap<>();
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("SELECT d.HoTen, d.STK, d.DiaChi, d.SoDu, b.Ten, b.DiaDiem, c.ATMCardID, a.SoTien, a.ThoiGian, a.TrangThai, a.ID, b.ID, c.ID, d.ID FROM ((GiaoDich a INNER JOIN ATM b ON a.ATMID = b.ID) INNER JOIN ATMCard c ON a.ATMCardID = c.ID) INNER JOIN KhachHang d ON a.KHID = d.ID WHERE a.thaotac = 0 AND a.id = ? AND a.TrangThai = 0");
+            pst = cn.prepareCall("SELECT d.Cus_Name, d.Cus_Account, d.Cus_Address, d.Cus_Blance, b.ATM_Name, b.ATM_Place, c.ATMCardID, a.TS_Money, a.TS_Date, a.TS_Status, a.ID, b.ID, c.ID, d.ID FROM (([dbo].[Transaction] a INNER JOIN ATM b ON a.ATMID = b.ID) INNER JOIN ATMCard c ON a.ATMCardID = c.ID) INNER JOIN Customer d ON a.TS_CustomerID = d.ID WHERE a.TS_Manipulation = 0 AND a.id = ? AND a.TS_Status = 0");
             pst.setInt(1, id);
             rsCus = pst.executeQuery();
             if (rsCus.next()) {

@@ -24,10 +24,10 @@ public class pnInfo extends javax.swing.JDialog {
             if (rsInfo.next()) {
                 txtAccount.setText(rsInfo.getString(2));
                 txtID.setText(String.valueOf(rsInfo.getInt(1)));
-                txtAddress.setText(rsInfo.getString(6));
-                txtMail.setText(rsInfo.getString(7));
-                txtName.setText(rsInfo.getString(5));
-                txtPhone.setText(rsInfo.getString(8));
+                txtAddress.setText(rsInfo.getString(5));
+                txtMail.setText(rsInfo.getString(6));
+                txtName.setText(rsInfo.getString(4));
+                txtPhone.setText(rsInfo.getString(7));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

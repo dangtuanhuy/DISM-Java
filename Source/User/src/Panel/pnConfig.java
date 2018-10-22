@@ -75,21 +75,23 @@ public class pnConfig extends javax.swing.JDialog {
         jPanel1.setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(153, 0, 51));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("ATM Database Configuration");
         jPanel1.add(jLabel2);
         jLabel2.setBounds(200, 30, 320, 26);
 
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 0, 51));
         jLabel3.setText("Server:");
         jPanel1.add(jLabel3);
         jLabel3.setBounds(60, 80, 56, 19);
 
-        txtServerName.setText("localhost");
+        txtServerName.setText("DESKTOP-0T1NQE8");
         jPanel1.add(txtServerName);
         txtServerName.setBounds(220, 72, 380, 30);
 
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 0, 0));
         jLabel4.setText("Database Name:");
@@ -100,6 +102,7 @@ public class pnConfig extends javax.swing.JDialog {
         jPanel1.add(txtDatabaseName);
         txtDatabaseName.setBounds(220, 112, 380, 30);
 
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 0, 0));
         jLabel6.setText("Login ID:");
@@ -110,6 +113,7 @@ public class pnConfig extends javax.swing.JDialog {
         jPanel1.add(txtLoginName);
         txtLoginName.setBounds(220, 152, 380, 30);
 
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 0, 0));
         jLabel7.setText("Password:");
@@ -125,6 +129,7 @@ public class pnConfig extends javax.swing.JDialog {
         jPanel1.add(txtPassword);
         txtPassword.setBounds(220, 192, 380, 30);
 
+        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 0, 0));
         jLabel8.setText("Port:");
@@ -155,7 +160,7 @@ public class pnConfig extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btSave);
-        btSave.setBounds(250, 281, 97, 30);
+        btSave.setBounds(250, 281, 93, 30);
 
         btExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Delete.png"))); // NOI18N
         btExit.setText("Exit");
@@ -165,9 +170,10 @@ public class pnConfig extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btExit);
-        btExit.setBounds(370, 281, 89, 30);
+        btExit.setBounds(370, 281, 87, 30);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/config_background.png"))); // NOI18N
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/configSQL.jpg"))); // NOI18N
         jPanel1.add(jLabel1);
         jLabel1.setBounds(0, 0, 680, 330);
 

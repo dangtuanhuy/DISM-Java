@@ -27,10 +27,10 @@ public class MyConnection {
             
         
         } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "Loi sai nap driver :"+ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error driver :"+ex.getMessage());
             ex.printStackTrace();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Loi sai tao ket noi :"+ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error Connect :"+ex.getMessage());
             ex.printStackTrace();
         }
         return cn;

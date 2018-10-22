@@ -38,7 +38,7 @@ public class tbManager {
         boolean check = false;
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("SELECT * FROM Manager WHERE id = ? AND MatKhau = ?");
+            pst = cn.prepareCall("SELECT * FROM Manager WHERE id = ? AND Password = ?");
             pst.setInt(1, mana.ID);
             pst.setString(2, mana.MatKhau);
             rsCus = pst.executeQuery();
@@ -65,7 +65,7 @@ public class tbManager {
         int result = 0;
         try {
             cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
-            pst = cn.prepareCall("UPDATE [dbo].[Manager] SET [MatKhau] = ? WHERE ID = ?");
+            pst = cn.prepareCall("UPDATE [dbo].[Manager] SET [Password] = ? WHERE ID = ?");
             pst.setInt(2, tbCus.ID);
             pst.setString(1, tbCus.MatKhau);
             result = pst.executeUpdate();

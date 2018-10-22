@@ -504,7 +504,7 @@ public class pnMain extends javax.swing.JPanel {
     private void initData() {
         try {
             Statement stManager = con.createStatement();
-            ResultSet rsManager = stManager.executeQuery("select HoTen from Manager where ID = " + id_manager + "");
+            ResultSet rsManager = stManager.executeQuery("select Username from Manager where ID = " + id_manager + "");
             if (rsManager.next()) {
                 hoten = rsManager.getString(1);
             }

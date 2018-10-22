@@ -95,7 +95,7 @@ public class pnAccount extends javax.swing.JPanel {
         add(txtSTK);
         txtSTK.setBounds(140, 350, 170, 50);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/background-stk.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BannerTran.jpg"))); // NOI18N
         add(jLabel1);
         jLabel1.setBounds(0, 0, 931, 626);
     }// </editor-fold>//GEN-END:initComponents
