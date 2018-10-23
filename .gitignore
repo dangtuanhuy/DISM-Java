@@ -23,3 +23,5 @@
 hs_err_pid*
 /Source/Manager/dist/
 /Source/User/dist/
+/Source/User/build/
+/Source/Manager/build/
