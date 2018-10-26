@@ -115,7 +115,7 @@ public class pnPrint extends javax.swing.JPanel {
             }
         });
         add(btnHome);
-        btnHome.setBounds(30, 490, 190, 60);
+        btnHome.setBounds(110, 430, 190, 60);
 
         btnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/menu-print.png"))); // NOI18N
         btnPrint.addActionListener(new java.awt.event.ActionListener() {
@@ -124,9 +124,9 @@ public class pnPrint extends javax.swing.JPanel {
             }
         });
         add(btnPrint);
-        btnPrint.setBounds(720, 490, 190, 67);
+        btnPrint.setBounds(360, 430, 190, 67);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("E:\\JAVA2\\TestProjectJava\\DISM - Java\\Source\\User\\src\\Images\\BannerTran.jpg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BannerTran.jpg"))); // NOI18N
         add(jLabel1);
         jLabel1.setBounds(0, 0, 931, 626);
     }// </editor-fold>//GEN-END:initComponents

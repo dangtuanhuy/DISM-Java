@@ -132,7 +132,7 @@ public class pnTranfer extends javax.swing.JPanel {
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         run.pnMain.removeAll();
-        run.pnMain.add(new pnWithdrawal(run, lang, atm, card));
+        run.pnMain.add(new pnMain(run, lang, atm, card));
         run.pnMain.revalidate();
     }//GEN-LAST:event_btnHomeActionPerformed
 
