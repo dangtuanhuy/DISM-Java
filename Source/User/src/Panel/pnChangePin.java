@@ -28,13 +28,14 @@ public class pnChangePin extends javax.swing.JPanel {
     DefaultTableModel model;
     int atm, card, count = 0;
     tbAccount cus = new tbAccount();
+
     public pnChangePin(Run run, boolean lang, int atm, int card) {
         initComponents();
         this.run = run;
         this.lang = lang;
         this.atm = atm;
         this.card = card;
-        
+
         if (lang) {
             loc = new Locale("vi", "VN");
         } else {
@@ -46,6 +47,7 @@ public class pnChangePin extends javax.swing.JPanel {
         lbPin_2.setText(rs.getString("lbPin_2"));
         lbPin_3.setText(rs.getString("lbPin_3"));
     }
+
     public pnChangePin() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -123,6 +125,11 @@ public class pnChangePin extends javax.swing.JPanel {
         btnOk.setBounds(310, 370, 147, 41);
 
         btnHome.setText("HOME");
+        btnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHomeActionPerformed(evt);
+            }
+        });
         add(btnHome);
         btnHome.setBounds(500, 370, 147, 41);
 
@@ -137,22 +144,45 @@ public class pnChangePin extends javax.swing.JPanel {
 
     private void btnOkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOkMouseClicked
         String pin = new String(txtOPin.getPassword());
-//        String pinN = String.valueOf(txtNPin.getPassword());
-          Integer pinN = Integer.parseInt(String.valueOf(txtNPin.getPassword()));
+        Integer pinN = Integer.parseInt(String.valueOf(txtNPin.getPassword()));
+        String pinNN = String.valueOf(txtNPin.getPassword());
+        String pinR = String.valueOf(txtRPin.getPassword());
+        
+        String txtPin = lbPin_1.getText();
+        String txtOP = lbPin_2.getText();
+        String txtRP = lbPin_3.getText();
+        
         Pattern p = Pattern.compile("^[0-9]{4}$");
         Matcher m = p.matcher(pin);
-            if(!m.matches()){
+        if(pin.equals("")){
+            JOptionPane.showMessageDialog(this, rs.getString("pin_null"));
+        }
+        else if(pinN.equals(""))
+        {
+            JOptionPane.showMessageDialog(this, rs.getString("pinN_null"));
+        }
+        else if (!pinNN.equals(pinR)) {
+            JOptionPane.showMessageDialog(this, rs.getString("pin_retype"));
+        } else {
+            if (!m.matches()) {
                 JOptionPane.showMessageDialog(this, rs.getString("pin_pattern_err"));
-            } else if(!cus.checkPin(card, Integer.parseInt(pin))){
+            } else if (!cus.checkPin(card, Integer.parseInt(pin))) {
                 JOptionPane.showMessageDialog(this, rs.getString("pin_match_err"));
             } else {
                 tbAccount.UpdatePin(card, pinN);
             }
+        }
     }//GEN-LAST:event_btnOkMouseClicked
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnOkActionPerformed
+
+    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+        run.pnMain.removeAll();
+        run.pnMain.add(new pnMain(run, lang, atm, card));
+        run.pnMain.revalidate();
+    }//GEN-LAST:event_btnHomeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

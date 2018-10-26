@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 public class tbAccount {
 
-    ServerFunction server = new ServerFunction();
+    public static ServerFunction server = new ServerFunction();
     
     public boolean checkCard(int id) {
         ResultSet rsATM = null;
@@ -254,9 +254,12 @@ public class tbAccount {
     public static void UpdatePin(int ID, int pinN){
         Connection cn = null;
         PreparedStatement pst = null;
-        String sqlUpdate = "UPDATE `ATMCard` SET  `PIN`='"+pinN+"' WHERE `ID`='"+ID+"'";
+        String sqlUpdate = "UPDATE ATMCard SET  PIN=? WHERE ATMCardID=?";
         try{
+            cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
             pst = cn.prepareStatement(sqlUpdate);
+            pst.setInt(1, pinN);
+            pst.setInt(2, ID);
             pst.execute();
             JOptionPane.showMessageDialog(null, "Update Pin Success","Thông Báo",1 );
         }catch (SQLException e) {
