@@ -29,6 +29,7 @@ public class pnMain extends javax.swing.JPanel {
         btnNap = new javax.swing.JButton();
         btnRut = new javax.swing.JButton();
         btnChuyen = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(931, 626));
@@ -40,7 +41,7 @@ public class pnMain extends javax.swing.JPanel {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("PLEASE SELECT YOUR LANGUAGE !");
         add(jLabel2);
-        jLabel2.setBounds(190, 110, 550, 60);
+        jLabel2.setBounds(210, 40, 550, 60);
 
         jLabel3.setBackground(new java.awt.Color(51, 51, 51));
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
@@ -48,16 +49,17 @@ public class pnMain extends javax.swing.JPanel {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Vui lòng chọn giao dịch");
         add(jLabel3);
-        jLabel3.setBounds(610, 200, 310, 25);
+        jLabel3.setBounds(330, 150, 310, 25);
 
         btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/menu-thoat.png"))); // NOI18N
+        btnExit.setPreferredSize(new java.awt.Dimension(345, 105));
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
             }
         });
         add(btnExit);
-        btnExit.setBounds(370, 540, 190, 70);
+        btnExit.setBounds(590, 450, 340, 100);
 
         btnXem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/menu-xemsodu.png"))); // NOI18N
         btnXem.addActionListener(new java.awt.event.ActionListener() {
@@ -66,7 +68,7 @@ public class pnMain extends javax.swing.JPanel {
             }
         });
         add(btnXem);
-        btnXem.setBounds(0, 410, 345, 100);
+        btnXem.setBounds(0, 320, 345, 100);
 
         btnNap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/menu-naptien.png"))); // NOI18N
         btnNap.addActionListener(new java.awt.event.ActionListener() {
@@ -75,7 +77,7 @@ public class pnMain extends javax.swing.JPanel {
             }
         });
         add(btnNap);
-        btnNap.setBounds(0, 260, 345, 100);
+        btnNap.setBounds(0, 180, 345, 100);
 
         btnRut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/menu-ruttien.png"))); // NOI18N
         btnRut.addActionListener(new java.awt.event.ActionListener() {
@@ -84,7 +86,7 @@ public class pnMain extends javax.swing.JPanel {
             }
         });
         add(btnRut);
-        btnRut.setBounds(580, 260, 345, 100);
+        btnRut.setBounds(590, 180, 345, 100);
 
         btnChuyen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/menu-chuyenkhoan.png"))); // NOI18N
         btnChuyen.addActionListener(new java.awt.event.ActionListener() {
@@ -93,7 +95,17 @@ public class pnMain extends javax.swing.JPanel {
             }
         });
         add(btnChuyen);
-        btnChuyen.setBounds(580, 410, 345, 100);
+        btnChuyen.setBounds(590, 320, 345, 100);
+
+        jButton1.setText("CHANGE PIN");
+        jButton1.setPreferredSize(new java.awt.Dimension(345, 105));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1);
+        jButton1.setBounds(0, 450, 345, 100);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Banner1.jpg"))); // NOI18N
         add(jLabel1);
@@ -132,6 +144,13 @@ public class pnMain extends javax.swing.JPanel {
         run.pnMain.revalidate();
     }//GEN-LAST:event_btnChuyenActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        pnChangePin changepin = new pnChangePin(run, lang, atm, card);
+        run.pnMain.removeAll();
+        run.pnMain.add(changepin);
+        run.pnMain.revalidate();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChuyen;
@@ -139,6 +158,7 @@ public class pnMain extends javax.swing.JPanel {
     private javax.swing.JButton btnNap;
     private javax.swing.JButton btnRut;
     private javax.swing.JButton btnXem;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

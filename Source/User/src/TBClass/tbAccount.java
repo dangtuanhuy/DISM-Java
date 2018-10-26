@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 public class tbAccount {
 
@@ -248,5 +249,18 @@ public class tbAccount {
             }
         }
         return (result > 0);
+    }
+    
+    public static void UpdatePin(int ID, int pinN){
+        Connection cn = null;
+        PreparedStatement pst = null;
+        String sqlUpdate = "UPDATE `ATMCard` SET  `PIN`='"+pinN+"' WHERE `ID`='"+ID+"'";
+        try{
+            pst = cn.prepareStatement(sqlUpdate);
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Update Pin Success","Thông Báo",1 );
+        }catch (SQLException e) {
+              JOptionPane.showMessageDialog(null, "Class" + ID + "Fail","Thông Báo",1 );
+        }
     }
 }

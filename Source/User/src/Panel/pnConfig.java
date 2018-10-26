@@ -87,7 +87,12 @@ public class pnConfig extends javax.swing.JDialog {
         jPanel1.add(jLabel3);
         jLabel3.setBounds(60, 80, 56, 19);
 
-        txtServerName.setText("DESKTOP-0T1NQE8");
+        txtServerName.setText("DESKTOP-0B3QB2Q");
+        txtServerName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtServerNameActionPerformed(evt);
+            }
+        });
         jPanel1.add(txtServerName);
         txtServerName.setBounds(220, 72, 380, 30);
 
@@ -160,7 +165,7 @@ public class pnConfig extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btSave);
-        btSave.setBounds(250, 281, 93, 30);
+        btSave.setBounds(250, 281, 101, 30);
 
         btExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Delete.png"))); // NOI18N
         btExit.setText("Exit");
@@ -170,7 +175,7 @@ public class pnConfig extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btExit);
-        btExit.setBounds(370, 281, 87, 30);
+        btExit.setBounds(370, 281, 95, 30);
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/configSQL.jpg"))); // NOI18N
@@ -238,6 +243,10 @@ public class pnConfig extends javax.swing.JDialog {
         validated = false;
         dispose();
     }//GEN-LAST:event_btExitActionPerformed
+
+    private void txtServerNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtServerNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtServerNameActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
