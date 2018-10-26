@@ -105,7 +105,7 @@ public class tbManager {
             rsMan = pst.executeQuery();
             while (rsMan.next()) {
                 //tbManager record = new tbManager(ID, VaiTro, TenDangNhap, MatKhau, Hoten, DiaChi, Email, SoDienThoai);
-                tbManager record = new tbManager(ID, VaiTro, TenDangNhap, MatKhau, Hoten, DiaChi, Email, SoDienThoai);
+                tbManager record = new tbManager(rsMan.getInt(1), rsMan.getInt(2),rsMan.getString(3), rsMan.getString(4), Hoten, DiaChi, Email, SoDienThoai);
                 listMan.add(record);
             }
         } catch (SQLException ex) {

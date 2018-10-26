@@ -87,6 +87,11 @@ public class pnAccount extends javax.swing.JPanel {
                 txtSTKMouseClicked(evt);
             }
         });
+        txtSTK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSTKActionPerformed(evt);
+            }
+        });
         txtSTK.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtSTKKeyPressed(evt);
@@ -119,6 +124,10 @@ public class pnAccount extends javax.swing.JPanel {
     private void txtSTKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSTKMouseClicked
         txtSTK.setText("");
     }//GEN-LAST:event_txtSTKMouseClicked
+
+    private void txtSTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSTKActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSTKActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
