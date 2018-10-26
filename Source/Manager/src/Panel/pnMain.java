@@ -17,7 +17,7 @@ public class pnMain extends javax.swing.JPanel {
     int id_manager;
     public Connection con;
     Frame parent;
-
+ public pnMain main;
     public pnMain() {
         initComponents();
         initData();
@@ -78,6 +78,7 @@ public class pnMain extends javax.swing.JPanel {
         jSeparator11 = new javax.swing.JToolBar.Separator();
         btnCal = new javax.swing.JButton();
         btnSetting = new javax.swing.JButton();
+        btnMana = new javax.swing.JButton();
 
         setForeground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(0, 0));
@@ -340,6 +341,19 @@ public class pnMain extends javax.swing.JPanel {
         });
         jToolBar5.add(btnSetting);
 
+        btnMana.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/boss-icon.png"))); // NOI18N
+        btnMana.setToolTipText("Setting");
+        btnMana.setFocusable(false);
+        btnMana.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnMana.setPreferredSize(new java.awt.Dimension(41, 41));
+        btnMana.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnMana.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManaActionPerformed(evt);
+            }
+        });
+        jToolBar5.add(btnMana);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -350,8 +364,8 @@ public class pnMain extends javax.swing.JPanel {
                         .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(jToolBar5, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jToolBar5, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jToolBar3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -376,7 +390,7 @@ public class pnMain extends javax.swing.JPanel {
                     .addComponent(jToolBar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jToolBar3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jToolBar5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jToolBar5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -440,12 +454,14 @@ public class pnMain extends javax.swing.JPanel {
     private void btnDepositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositActionPerformed
         pnDeposit deposit = new pnDeposit(this);
         pnRight.setLayout(new java.awt.CardLayout());
+       
         pnRight.removeAll();
         pnRight.add(deposit);
         pnRight.revalidate();
     }//GEN-LAST:event_btnDepositActionPerformed
 
     private void btnAtmCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtmCardActionPerformed
+        //Quang Trọng
         pnATMCard atmcard = new pnATMCard(this);
         pnRight.setLayout(new java.awt.CardLayout());
         pnRight.removeAll();
@@ -469,6 +485,15 @@ public class pnMain extends javax.swing.JPanel {
         pnRight.revalidate();
     }//GEN-LAST:event_btnSettingActionPerformed
 
+    private void btnManaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManaActionPerformed
+        // TODO add your handling code here:
+        pnManager pnmanager = new pnManager(this);
+        pnRight.setLayout(new java.awt.CardLayout());
+        pnRight.removeAll();
+        pnRight.add(pnmanager);
+        pnRight.revalidate();
+    }//GEN-LAST:event_btnManaActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton _btnAccountDetail;
     private javax.swing.JLabel _lblAccount;
@@ -487,6 +512,7 @@ public class pnMain extends javax.swing.JPanel {
     private javax.swing.JButton btnHistory;
     private javax.swing.JButton btnInfo;
     private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btnMana;
     private javax.swing.JButton btnSetting;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
