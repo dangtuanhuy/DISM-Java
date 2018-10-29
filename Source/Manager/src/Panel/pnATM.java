@@ -588,7 +588,7 @@ public class pnATM extends javax.swing.JPanel {
                     }
                 }
             }
-            JOptionPane.showMessageDialog(this, "deleted successfully " + count + " record in " + total + " records ");
+            JOptionPane.showMessageDialog(this, "Deleted  " + count + " record in " + total + " records ");
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 

@@ -4,9 +4,14 @@ package Panel;
  *
  * @author HUY
  */
+import TBClass.tbATM;
+import TBClass.tbManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 public class pnManager extends javax.swing.JPanel {
 
@@ -14,16 +19,26 @@ public class pnManager extends javax.swing.JPanel {
      * Creates new form pnManager
      */
     pnMain home;
-    public static String sqlSelect = "SELECT * FROM Manager ";
+    DefaultTableModel table;
+    TableRowSorter<TableModel> sorter;
 
     public pnManager(pnMain home) {
         initComponents();
         initData();
+
         this.home = home;
     }
 
-    private void initData() {
+    tbManager a;
 
+    private void initData() {
+        table = (DefaultTableModel) tbManager.getModel();
+        sorter = (TableRowSorter<TableModel>) tbManager.getRowSorter();
+        a = new tbManager();
+         for (tbManager item : a.getList()) {
+          table.addRow(item.toVector());
+        }
+         
     }
 
     /**
@@ -40,8 +55,8 @@ public class pnManager extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        grManager = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tbManager = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         btnReset = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
@@ -103,34 +118,37 @@ public class pnManager extends javax.swing.JPanel {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Manager Info"));
         jPanel3.setPreferredSize(new java.awt.Dimension(727, 288));
 
-        grManager.setModel(new javax.swing.table.DefaultTableModel(
+        tbManager.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Role", "Username", "Password", "FullName", "Address", "Email", "Phone"
             }
         ));
-        grManager.setPreferredSize(new java.awt.Dimension(375, 0));
-        jScrollPane1.setViewportView(grManager);
+        jScrollPane3.setViewportView(tbManager);
+        if (tbManager.getColumnModel().getColumnCount() > 0) {
+            tbManager.getColumnModel().getColumn(7).setResizable(false);
+        }
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 718, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+            .addGap(0, 265, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
@@ -399,6 +417,7 @@ public class pnManager extends javax.swing.JPanel {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
 
+        a.insert(txtUsername.getText().trim(), txtPassword.getText(), txtName.getText().trim(),txtAddress.getText().trim(), txtEmail.getText().trim(),txtPhone.getText().trim(),1);
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
@@ -430,7 +449,6 @@ public class pnManager extends javax.swing.JPanel {
     private javax.swing.JButton btnPrint;
     private javax.swing.JButton btnReset;
     private javax.swing.JButton btnUpdate;
-    private javax.swing.JTable grManager;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -444,10 +462,11 @@ public class pnManager extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JRadioButton rdAmin;
     private javax.swing.JRadioButton rdManager;
+    private javax.swing.JTable tbManager;
     private javax.swing.JTextArea txtAddress;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtName;
@@ -455,6 +474,9 @@ public class pnManager extends javax.swing.JPanel {
     private javax.swing.JTextField txtPhone;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
-private void frDefault() {
+
+    private void frDefault() {
+
     }
+
 }

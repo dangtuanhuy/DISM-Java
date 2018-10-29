@@ -7,6 +7,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import net.proteanit.sql.*;
 
 public class tbManager {
 
@@ -24,7 +28,18 @@ public class tbManager {
         this.Email = Email;
         this.SoDienThoai = SoDienThoai;
     }
-
+    public Vector toVector() {
+        Vector a = new Vector();
+        a.add(ID);
+        a.add(VaiTro);
+        a.add(TenDangNhap);
+        a.add(MatKhau);
+        a.add(Hoten);
+        a.add(DiaChi);
+        a.add(Email);
+        a.add(SoDienThoai);
+        return a;
+    }
     public tbManager() {
     }
 
@@ -105,7 +120,7 @@ public class tbManager {
             rsMan = pst.executeQuery();
             while (rsMan.next()) {
                 //tbManager record = new tbManager(ID, VaiTro, TenDangNhap, MatKhau, Hoten, DiaChi, Email, SoDienThoai);
-                tbManager record = new tbManager(rsMan.getInt(1), rsMan.getInt(2),rsMan.getString(3), rsMan.getString(4), Hoten, DiaChi, Email, SoDienThoai);
+                tbManager record = new tbManager(rsMan.getInt(1), rsMan.getInt(8), rsMan.getString(2), rsMan.getString(3), rsMan.getString(4), rsMan.getString(5), rsMan.getString(6), rsMan.getString(7));
                 listMan.add(record);
             }
         } catch (SQLException ex) {
@@ -127,7 +142,126 @@ public class tbManager {
         }
         return listMan;
     }
+    public boolean insert(String username, String pass, String fullname, String address, String Email, String Phone, int Role) {
+        Connection cn = null;
+        PreparedStatement pst = null;
+        int result = 0;
+        try {
+            cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
+            pst = cn.prepareCall("INSERT [dbo].[Manager] ([Username],[Password],[FullName],[Address],[Email],[Phone],[Role]) VALUES (?,?,?,?,?,?,?)");
+            pst.setString(1, username);
+            pst.setString(2, pass);
+            pst.setString(3, fullname);
+            pst.setString(4, address);
+            pst.setString(5, Email);
+            pst.setString(6, Phone);
+            pst.setInt(7, Role);
+            result = pst.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                if(pst != null) pst.close();
+                if(cn != null) cn.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return (result > 0 ? true : false);
+    }
+//public tbCustomer getInfo(int id) {
+//        ResultSet rsMan = null;
+//        Connection cn = null;
+//        PreparedStatement pst = null;
+//        tbCustomer record = null;
+//        try {
+//            cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
+//            pst = cn.prepareCall("SELECT * FROM Manager WHERE id = ?");
+//            pst.setInt(1, id);
+//            rsMan = pst.executeQuery();
+//            if (rsMan.next()) {
+//               //tbManager record = new tbManager(rsMan.getInt(1), rsMan.getInt(2),rsMan.getString(3), rsMan.getString(4),rsMan.getString(5), rsMan.getString(6), rsMan.getString(7), rsMan.getString(8));
+//            }
+//        } catch (SQLException ex) {
+//            ex.printStackTrace();
+//        } finally {
+//            try {
+//                if(rsMan != null) rsMan.close();
+//                if(pst != null) pst.close();
+//                if(cn != null) cn.close();
+//            } catch (SQLException ex) {
+//                ex.printStackTrace();
+//            }
+//        }
+//        return record;
+//    }
+    //Lấy dữ liệu cho bảng
 
+//    public void LoadData(String sqlSelect, JTable grManager) {
+//        ResultSet rsMan = null;
+//        Connection cn = null;
+//        PreparedStatement pst = null;
+//        try {
+//            cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
+//            pst = cn.prepareStatement(sqlSelect);
+//            rsMan = pst.executeQuery();
+//            grManager.setModel((DbUtils.resultSetToTableModel(rsMan)));
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, e, "Box", 1);
+//        }
+//    }
+
+//    public static ResultSet ShowManager(String sqlSelect) {
+//
+//        Connection cn = null;
+//        PreparedStatement pst = null;
+//        try {
+//            pst = cn.prepareStatement(sqlSelect);
+//            return pst.executeQuery();
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, e, "Box", 1);
+//        }
+//        return null;
+//    }
+//     public Vector toVector() {
+//        Vector vtMan = new Vector();
+//        vtMan.add(ID);
+//        vtMan.add(Hoten);
+//        vtMan.add(SoDienThoai);
+//        vtMan.add(Email);
+//     
+//        vtMan.add(DiaChi);
+//        vtMan.add(TenDangNhap);
+//        vtMan.add(MatKhau);
+//        vtMan.add(VaiTro);
+//        
+//        return vtMan;
+//    }
+    public tbManager getRecent() {
+        ResultSet rsMan = null;
+        Connection cn = null;
+        PreparedStatement pst = null;
+        tbManager record = null;
+        try {
+            cn = MyConnection.getConnect(server.getServerName(), server.getDatabaseName(), server.getUserName(), server.getPassword());
+            pst = cn.prepareCall("SELECT * FROM Manager");
+            rsMan = pst.executeQuery();
+            if (rsMan.next()) {
+                record = new tbManager(rsMan.getInt(1), rsMan.getInt(2), rsMan.getString(3), rsMan.getString(4), rsMan.getString(5), rsMan.getString(6), rsMan.getString(7), rsMan.getString(8));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                if(rsMan != null) rsMan.close();
+                if(pst != null) pst.close();
+                if(cn != null) cn.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return record;
+    }
     public ServerFunction getServer() {
         return server;
     }

@@ -20,6 +20,11 @@
             <file>file:/C:/Users/SVE1521BCX/Documents/NetBeansProjects/Project_ATM/src/Panel/dlCustomer.java</file>
             <file>file:/C:/Users/SVE1521BCX/Documents/NetBeansProjects/Project_ATM/src/DBClass/ConnectDB.java</file>
         </group>
-        <group/>
+        <group>
+            <file>file:/E:/JAVA2/TestProjectJava/DISM%20-%20Java/Source/Manager/src/Panel/dlCustomer.java</file>
+            <file>file:/E:/JAVA2/TestProjectJava/DISM%20-%20Java/Source/Manager/src/TBClass/tbCustomer.java</file>
+            <file>file:/E:/JAVA2/TestProjectJava/DISM%20-%20Java/Source/Manager/src/Panel/pnCustomer.java</file>
+            <file>file:/E:/JAVA2/TestProjectJava/DISM%20-%20Java/Source/Manager/src/Panel/pnATM.java</file>
+        </group>
     </open-files>
 </project-private>
